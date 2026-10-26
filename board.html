@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        textarea {
+            width: 300px;
+            height: 120px;
+            padding: 10px;
+            font-size: 15px;
+            background-color: azure;
+        }
+
+
+    </style>
+    <title>게시판 글쓰기</title>
+</head>
+<body>
+    <h2>문의 내용 작성</h2>
+    <hr>
+    <textarea id="message" maxlength="10" placeholder="문의 내용을 10자 이내로 입력하세요."></textarea>
+    <p id="counter">
+        0 / 10자
+    </p>
+
+    <script>
+        const message = document.getElementById("message");
+        const counter = document.getElementById("counter");
+
+        message.addEventListener("input", function(){
+            let messageLength = message.value.length;
+            counter.textContent = messageLength + " / 10자";
+
+            if(messageLength >= 10) {
+                alert("문의 내용은 10자 이내이어야 합니다!");
+            }
+
+        });
+        //사용자가 입력창에 키보드로 뭔가를 입력하거나, 지우거나, 복붙하거나 하는 이벤트가 발생했을때 해당 함수가 실행
+    </script>
+</body>
+</html>
