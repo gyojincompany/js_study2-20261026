@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 로그인</title>
+</head>
+<body>
+    <h2>로그인</h2>
+    <form>
+        아이디 : <input type="text" id="userId" name="memberid"><br><br>
+        비밀번호 : <input type="password" id="password" name="password"><br><br>
+        <button type="submit" onclick="checkLogin()">로그인</button>
+        <button type="reset">취소</button>
+    </form>
+
+    <script>
+        function checkLogin() {
+            //유저가 입력한 아이디와 비밀번호 값을 가져와서 저장하기
+            let userId = document.getElementById("userId").value.trim(); //유저가 입력한 아이디 값
+            //trim->문자열 양쪽의 공백을 제거
+            let userpw = document.getElementById("password").value.trim(); //유저가 입력한 비밀번호 값
+
+            if(userId === "") { //참->유저가 공백으로 아이디값을 입력함
+                alert("아이디를 입력하세요.");
+                return false; //return 문이 실행되면 함수가 종료됨
+            }
+
+            if(userpw === "") { //참->유저가 공백으로 비밀번호값을 입력함
+                alert("비밀번호를 입력하세요.");
+                return false;
+            }
+
+            return true;
+
+        }
+    </script>
+</body>
+</html>
