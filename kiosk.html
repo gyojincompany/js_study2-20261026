@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커피 전문점 키오스크</title>
+</head>
+<body>
+    <h1>커피 전문점 키오스크</h1>
+
+    <h2>메뉴 선택</h2>
+    <hr>
+    <p>
+        아메리카노 2,000원
+        <input type="number" id="americano" value="0" min="0"> 잔
+    </p>
+    <p>
+        카페라떼 3,000원
+        <input type="number" id="latte" value="0" min="0"> 잔
+    </p>
+    <p>
+        딸기라떼 4,000원
+        <input type="number" id="berryLatte" value="0" min="0"> 잔
+    </p>
+    <hr>
+    <button type="button" onclick="order()">주문하기</button>
+    <button type="button" onclick="reset()">초기화</button>
+    <hr><hr>
+    <h2>주문 내역</h2>
+    <p id="resultAme">
+        아메리카노 : 0잔 0원
+    </p>
+    <p id="resultLatte">
+        카페라떼 : 0잔 0원
+    </p>
+    <p id="resultBerry">
+        딸기라떼 : 0잔 0원
+    </p>
+
+    <h2 id="total">총 결제 금액 : 0원</h2>
+
+    <script>
+
+        const americanoP = 2000; //아메리카노 1잔 가격
+        const latteP = 3000; //카페라떼 1잔 가격
+        const berryLatteP = 4000; //딸기라떼 1잔 가격
+
+        function order() {
+            //음료의 주문 수량 가져오기
+            let americano = document.getElementById("americano").value; //아메리카노 주문 수량
+            let latte = document.getElementById("latte").value; //카페라떼 주문 수량
+            let berryLatte = document.getElementById("berryLatte").value; //딸기라떼 주문 수량
+
+            //음료 메뉴별 가격 계산
+            let americanoTotalPrice = americano * americanoP; //아메리카노 주문 총 가격
+            let latteTotalPrice = latte * latteP; //카페라떼 주문 총 가격
+            let berryTotalPrice = berryLatte * berryLatteP; //딸기라떼 주문 총 가격
+
+            //주문한 모든 음료 총 가격
+            let totalPrice = americanoTotalPrice + latteTotalPrice + berryTotalPrice; //모든 음료 주문 총 가격
+
+            //주문 내역 출력
+            document.getElementById("resultAme").textContent = 
+            "아메리카노 : " + americano + "잔 " +  americanoTotalPrice + "원";
+
+            document.getElementById("resultLatte").textContent = 
+            "카페라떼 : " + latte + "잔 " +  latteTotalPrice + "원";
+
+            document.getElementById("resultBerry").textContent = 
+            "딸기라떼 : " + berryLatte + "잔 " +  berryTotalPrice + "원";
+
+            //총 결제 금액 출력
+            document.getElementById("total").textContent = 
+            "총 결제 금액 : " + totalPrice + "원";
+
+        }
+
+        function reset() {
+            //주문 수량 초기화
+            document.getElementById("americano").value = 0; //아메리카노 주문 수량을 0으로 초기화
+            document.getElementById("latte").value = 0; //카페라떼 주문 수량을 0으로 초기화
+            document.getElementById("berryLatte").value = 0; //딸기라떼 주문 수량을 0으로 초기화
+
+            //주문 내역 초기화
+            document.getElementById("resultAme").textContent = "아메리카노 : 0잔 0원";
+            document.getElementById("resultLatte").textContent = "카페라떼 : 0잔 0원";
+            document.getElementById("resultBerry").textContent = "딸기라떼 : 0잔 0원";
+            document.getElementById("total").textContent = "총 결제 금액 : 0원";
+
+        }
+    </script>
+
+</body>
+</html>
