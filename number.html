@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 자바스크립트 예제</title>
+</head>
+<body>
+    <h1>숫자 증가 감소 프로그램</h1>
+    <h2 id="number">0</h2>
+
+    <button type="button" onclick="increase()">증가</button>
+    <button type="button" onclick="decrease()">감소</button>
+    <button type="button" onclick="reset()">초기화</button>
+
+    <script>
+        let count = 0;
+
+        function increase() { //증가 버튼 클릭 시 1 증가
+            count = count + 1;
+            document.getElementById("number").textContent = count;
+            //변경된 count 값을 화면에 표시
+            console.log(count); //콘솔창에 count 값을 출력
+        }
+
+        function decrease() { //감소 버튼 클릭 시 1 감소
+            count = count - 1;
+            document.getElementById("number").textContent = count;
+            console.log(count);
+        }
+
+        function reset() { //초기화 버튼 클릭 시 0으로 초기화
+            count = 0;
+            document.getElementById("number").textContent = count;
+            console.log(count);
+        }
+
+        
+    </script>
+</body>
+</html>
