@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입</title>
+</head>
+<body>
+    <h2>회원 가입</h2>
+    <form>
+        아이디 : <input type="text" id="userId"><br>
+        비밀번호 : <input type="password" id="password"><br>
+        비밀번호 확인 : <input type="password" id="passwordCheck"><br>
+        이름 : <input type="text" id="userName"><Br>
+        이메일 : <input type="email" id="userEmail"><br>
+        <button type="submit" onclick="checkSignup()">회원가입</button>
+        <button type="reset">취소</button>
+    </form>
+
+    <script>
+        function checkSignup() {
+            let userId = document.getElementById("userId").value.trim();
+            let userPw = document.getElementById("password").value.trim();
+            let passwordCheck = document.getElementById("passwordCheck").value.trim();
+            let userName = document.getElementById("userName").value.trim();
+            let userEmail = document.getElementById("userEmail").value.trim();
+
+            //1. 아이디 공란여부 검사
+            if(userId === "") {
+                alert("아이디를 입력하세요!");
+                return false;
+            }
+
+            //2. 아이디 길이 검사
+            if(userId.length < 5) { //아이디의 길이가 4자 이하면 가입 불가
+                alert("아이디는 5자 이상이어야 합니다.");
+                return false;
+            }
+
+            //3. 비밀번호 공란여부 검사
+            if(userPw === "") {
+                alert("비밀번호를 입력하세요!");
+                return false;
+            }
+
+            //4. 비밀번호 길이 검사
+            if(userPw.length < 5) { //비밀번호의 길이가 4자 이하면 가입 불가
+                alert("비밀번호는 5자 이상이어야 합니다.");
+                return false;
+            }
+
+            //5. 비밀번호 확인 검사
+            if(userPw !== passwordCheck) { //참이면 비밀번호와 비밀번호 확인이 같지 않으므로 가입 불가
+                alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+                return false;
+            }
+
+            //6. 이름 공란여부 검사
+            if(userName === "") {
+                alert("이름을 입력하세요!");
+                return false;
+            }
+
+            //7. 이메일 공란여부 검사            
+            if(userEmail === "") {
+                alert("이메일을 입력하세요!");
+                return false;
+            }
+
+            //8. 이메일 형식 검사(email@email.com)
+            if(!userEmail.includes("@") || !userEmail.includes(".")) {
+                // @ 포함되어있지 않거나 . 이 포함되어 있지 않으면 참->이메일 형식이 아니다!
+                alert("올바른 이메일 형식을 입력하세요.");
+                return false;
+            }
+
+            alert("회원 가입이 완료되었습니다"); //유효성 체크 조건을 모두 통과한 경우만 출력
+            return true; //->submit
+
+        }
+    </script>
+</body>
+</html>
